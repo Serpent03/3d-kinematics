@@ -1,38 +1,15 @@
-class VEC3D:
-    x = 0
-    y = 0
-    z = 0
+import matplotlib.pyplot as plt
+from VEC import VEC2, STAVEC2, VEC3
+from time import sleep
 
-    def __init__(self, px, py, pz):
-        self.x = px
-        self.y = py
-        self.z = pz
-
-    def add(self, pVEC):
-        self.x += pVEC.x
-        self.y += pVEC.y
-        self.z += pVEC.z
-
-    def sub(self, pVEC):
-        self.x -= pVEC.x
-        self.y -= pVEC.y
-        self.z -= pVEC.z
-    
-    def differentiate(self, pOLDVEC, dt):
-        self.x = (self.x + pOLDVEC.x) / dt
-        self.y = (self.y + pOLDVEC.y) / dt
-        self.z = (self.z + pOLDVEC.z) / dt
-
-    def display(self):
-        print(self.x)
-        print(self.y)
-        print(self.z)
+shell = STAVEC2(-9.81, 20, 5)
 
 
-if __name__ == "__main__":
-    shell = VEC3D(1, 1, 1)
-    gravityVEC = VEC3D(0, 0, -9.8) # z => point down
-    shell.display()
+while (shell.t - shell.start) <= 5:
+    shell.integrate()
+    sleep(0.01)
+
+shell.display() 
 
 
 
